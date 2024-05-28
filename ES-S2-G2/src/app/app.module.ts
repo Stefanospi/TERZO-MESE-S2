@@ -10,6 +10,7 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { PostDetailComponent } from './post-detail/post-detail.component';
 import { SinglePostComponent } from './single-post/single-post.component';
 import { FormsModule } from '@angular/forms';
+import { BackgroundColorDirective } from './background-color.directive';
 
 
 
@@ -22,6 +23,7 @@ import { FormsModule } from '@angular/forms';
     HomepageComponent,
     PostDetailComponent,
     SinglePostComponent,
+    BackgroundColorDirective,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
