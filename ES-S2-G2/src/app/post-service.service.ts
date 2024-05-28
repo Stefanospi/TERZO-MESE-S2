@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { PostInterface } from 'src/interfaces/post.interface';
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PostServiceService {
   post!: PostInterface;
   related: PostInterface[] = [];
   edit: Boolean = false;
+  filteredPosts!: PostInterface[];
   posts: PostInterface[] = [
     {
       id: 1,
@@ -253,7 +253,8 @@ export class PostServiceService {
     },
   ];
 
-/* FUNZIONI HOMEPAGE */
+
+  /* FUNZIONI HOMEPAGE */
   get topPost(): PostInterface {
     return this.posts.sort((a, b) => b.reactions - a.reactions)[0];
   }
@@ -269,13 +270,30 @@ export class PostServiceService {
     return randomPosts;
   }
 
-/* FUNZIONI ACTIVE POSTS */
-get activePosts(): PostInterface[] {
-  return this.posts.filter((post) => post.active);
-}
-/* FUNZIONI INACTIVE POSTS */
-get inactivePosts(): PostInterface[] {
-  return this.posts.filter((post) => !post.active);
-}
+  /* FUNZIONI ACTIVE POSTS */
+  get activePosts(): PostInterface[] {
+    return this.posts.filter((post) => post.active);
+  }
+  /* FUNZIONI INACTIVE POSTS */
+  get inactivePosts(): PostInterface[] {
+    return this.posts.filter((post) => !post.active);
+  }
 
+  /* FUNZIONE PER PRENDERE SOLAMENTE I TAGS */
+  getUniqueTags(): string[] {
+    const uniqueTags = new Set<string>();
+
+    this.posts.forEach(post => {
+      post.tags.forEach(tag => {
+        uniqueTags.add(tag);
+      });
+    });
+
+    return Array.from(uniqueTags);
+
+  }
+// Inside PostServiceService class
+getFilterPostsByTag(tag: string): PostInterface[] {
+  return this.posts.filter((post) => post.tags.includes(tag));
+}
 }

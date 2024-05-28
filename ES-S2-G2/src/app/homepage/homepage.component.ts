@@ -11,18 +11,24 @@ export class HomepageComponent {
   post!: PostInterface;
   related: PostInterface[] = [];
   posts: PostInterface[] = [];
+  uniqueTags: string[] = [];
+  filteredPosts: PostInterface[] = [];
 
   @ViewChild('singlePost') singlePost!: SinglePostComponent;
 
   constructor(private postService: PostServiceService) {}
-  ngOnInit():void{
+  ngOnInit(): void {
     this.post = this.postService.topPost;
     this.related = this.postService.getRandomPosts(4);
     this.posts = this.postService.posts;
+    this.uniqueTags = this.postService.getUniqueTags();
+    this.filteredPosts = this.posts;
   }
-
+// Inside HomepageComponent class
+filterPostsByTag(tag: string): void {
+  this.filteredPosts = this.postService.getFilterPostsByTag(tag);
+}
   editPost() {
     alert('Edit successful!');
   }
-
 }
