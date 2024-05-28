@@ -24,4 +24,5 @@ export class HomepageComponent {
   editPost() {
     alert('Edit successful!');
   }
+
 }
