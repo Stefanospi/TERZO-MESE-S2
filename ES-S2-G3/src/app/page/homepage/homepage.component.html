@@ -1,0 +1,19 @@
+<table class="table">
+  <tr>
+    <th>#</th>
+    <th>Nome</th>
+    <th>Descrizione</th>
+    <th>Prezzo</th>
+    <th>Azioni</th>
+  </tr>
+  <tr *ngFor="let product of prodotti">
+    <td>{{product.id}}</td>
+    <td>{{product.nome}}</td>
+    <td>{{product.description}}</td>
+    <td>{{product.prezzo}}</td>
+    <td>
+      <button class="btn btn-warning"> Modifica </button>
+      <button class="btn btn-danger"> Elimina </button>
+    </td>
+  </tr>
+</table>
