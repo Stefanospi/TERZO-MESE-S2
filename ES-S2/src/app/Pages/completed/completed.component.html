@@ -1,14 +1,18 @@
-<h1 class="fst-italic text-center">COMPLETED:</h1>
-<div *ngFor="let postItem of todoPost">
-  <div
-    class="container mt-3 rounded-2 border border-1 border-black d-flex flex-column align-items-center bg-success"
-    *ngIf="postItem.completed"
-  >
-    <h3 class="fs-4">{{ postItem.todo }}</h3>
-    <h4 class="fst-italic fs-6">
-      {{ postItem.user?.firstName }} {{ postItem.user?.lastName }} -
-      {{ postItem.user?.title }}
-    </h4>
-    <input type="checkbox" [(ngModel)]="postItem.completed" />
+<h1 class="fst-italic text-center mt-3">COMPLETED:</h1>
+<div class="container">
+  <div class="d-flex flex-column justify-content-around">
+    <div *ngFor="let postItem of todoPost">
+      <div
+        class="container mt-3 rounded-2 border border-1 border-black d-flex flex-column align-items-center bg-success"
+        *ngIf="postItem.completed"
+      >
+        <h3 class="fs-4">{{ postItem.todo }}</h3>
+        <h4 class="fst-italic fs-6">
+          {{ postItem.user?.firstName }} {{ postItem.user?.lastName }} -
+          {{ postItem.user?.title }}
+        </h4>
+        <input type="checkbox" [(ngModel)]="postItem.completed" />
+      </div>
+    </div>
   </div>
 </div>
