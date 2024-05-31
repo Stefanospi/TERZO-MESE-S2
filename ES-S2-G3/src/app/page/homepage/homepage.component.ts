@@ -14,9 +14,9 @@ export class HomepageComponent {
 
 
   ngOnInit(){
-    this.prodottiSvc.getProdotti().subscribe(prodotto =>{
-      this.prodotti = prodotto;
-    })
+    this.prodottiSvc.getProdotti().subscribe((product) => {
+      this.prodotti = product;
+    });
   }
 
 }
